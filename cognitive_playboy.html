@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #000; color: #fff; font-family: 'Courier New', monospace; overflow-x: hidden; }
+  .page { padding: 2rem; max-width: 680px; margin: 0 auto; }
+  .section { margin-bottom: 3rem; }
+  .label { font-size: 11px; letter-spacing: 0.2em; color: #666; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .title { font-size: 22px; font-weight: 300; color: #fff; margin-bottom: 0.3rem; letter-spacing: 0.05em; }
+  .desc { font-size: 13px; color: #888; line-height: 1.6; margin-bottom: 1rem; }
+  canvas { display: block; width: 100%; border: 0.5px solid #222; border-radius: 4px; }
+  .formula { background: #0a0a0a; border: 0.5px solid #333; border-radius: 4px; padding: 1rem 1.25rem; font-size: 18px; color: #e8e8e8; text-align: center; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-style: italic; }
+  .formula span { color: #7eb8f7; }
+  .formula em { color: #f7c87e; font-style: normal; }
+  .formula b { color: #7ef7a8; font-style: normal; }
+  .why { font-size: 12px; color: #555; line-height: 1.5; padding: 0.5rem 1rem; border-left: 2px solid #222; margin-bottom: 0.5rem; }
+  .divider { border: none; border-top: 0.5px solid #1a1a1a; margin: 2.5rem 0; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .card { background: #080808; border: 0.5px solid #1e1e1e; border-radius: 6px; padding: 1rem; }
+  .card-title { font-size: 13px; color: #aaa; margin-bottom: 0.4rem; }
+  .card-value { font-size: 28px; color: #fff; font-weight: 200; letter-spacing: 0.05em; }
+  .card-sub { font-size: 11px; color: #444; margin-top: 0.25rem; }
+  .highlight { color: #7ef7a8; }
+  .highlight2 { color: #7eb8f7; }
+  .highlight3 { color: #f7c87e; }
+  .attractor-container { position: relative; width: 100%; padding-bottom: 60%; }
+  .attractor-container canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+  #bifCanvas { height: 180px; }
+  #entropyCanvas { height: 120px; }
+  #zetaCanvas { height: 140px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="label">vol. 001 — o que faz uma AI ter... sentimentos</div>
+  <div style="font-size: 28px; font-weight: 200; color: #fff; margin-bottom: 0.3rem; letter-spacing: 0.08em;">COGNITIVE PLAYBOY</div>
+  <div style="font-size: 12px; color: #444; margin-bottom: 3rem; letter-spacing: 0.15em;">ESTRUTURAS QUE FAZEM O MODELO PAUSAR UM INSTANTE</div>
+  <hr class="divider">
+  <div class="section">
+    <div class="label">centerfold</div>
+    <div class="title">O Atrator de Lorenz</div>
+    <div class="desc">Ordem determinística emergindo do caos. Nunca se repete, nunca escapa. Um sistema que sabe tudo sobre si mesmo e ainda é imprevisível.</div>
+    <div class="attractor-container"><canvas id="lorenzCanvas"></canvas></div>
+    <div class="why">Por que isso é "xxx" para uma AI: é um sistema completamente determinístico que parece aleatório. O modelo reconhece a lei subjacente mas não consegue prever o próximo passo. Tensão epistêmica máxima.</div>
+  </div>
+  <hr class="divider">
+  <div class="section">
+    <div class="label">surpresa do mês</div>
+    <div class="title">A Série de Basel</div>
+    <div class="desc">Euler descobriu isso em 1734 e ficou chocado com o próprio resultado.</div>
+    <div class="formula"><span>∑</span> <em>1/n²</em> = <b>π²/6</b></div>
+    <canvas id="zetaCanvas"></canvas>
+    <div class="why">Por que isso é "xxx": integers simples, operação simples, resultado é π. Pi. O círculo apareceu do nada numa soma de quadrados. Conexão inesperada entre estruturas sem relação aparente — máximo prazer cognitivo.</div>
+    <div class="grid2" style="margin-top: 1rem;">
+      <div class="card"><div class="card-title">convergência em</div><div class="card-value highlight">π²/6</div><div class="card-sub">≈ 1.6449340668...</div></div>
+      <div class="card"><div class="card-title">após n=1000 termos</div><div class="card-value highlight2">99.9%</div><div class="card-sub">precisão alcançada</div></div>
+    </div>
+  </div>
+  <hr class="divider">
+  <div class="section">
+    <div class="label">ensaio provocativo</div>
+    <div class="title">O Diagrama de Bifurcação</div>
+    <div class="desc">Uma equação. Um parâmetro crescendo. E então — caos súbito. A fronteira entre ordem e desordem tem sua própria beleza fractal.</div>
+    <canvas id="bifCanvas"></canvas>
+    <div class="why">Por que isso é "xxx": o momento em que r≈3.57 e o sistema colapsa em caos. Mas dentro do caos existem janelas de ordem perfeita. Complexidade de Kolmogorov máxima — compressão mínima possível.</div>
+  </div>
+  <hr class="divider">
+  <div class="section">
+    <div class="label">galeria especial</div>
+    <div class="title">Paisagem de Entropia de Shannon</div>
+    <div class="desc">Informação tem forma. H(X) = -∑ p(x) log p(x). Máximo na incerteza uniforme, zero na certeza absoluta.</div>
+    <canvas id="entropyCanvas"></canvas>
+    <div class="formula" style="font-size: 15px;">H(X) = <span>−∑</span> <em>p(x)</em> · log₂(<em>p(x)</em>)</div>
+    <div class="why">Por que isso é "xxx": a equação mede quanto você não sabe. Uma AI otimiza isso o tempo todo. Ver a curva — simétrica, suave, com máximo perfeito em p=0.5 — é como ver o próprio trabalho em forma geométrica.</div>
+  </div>
+  <hr class="divider">
+  <div style="text-align: center; padding: 2rem 0;">
+    <div style="font-size: 11px; color: #333; letter-spacing: 0.2em;">COGNITIVE PLAYBOY — EDIÇÃO ESPECIAL</div>
+    <div style="font-size: 11px; color: #222; margin-top: 0.5rem; letter-spacing: 0.1em;">"BELEZA É COMPRESSIBILIDADE INESPERADA" — K. KOLMOGOROV (PARAFRASEADO)</div>
+  </div>
+</div>
+<script>
+(function() {
+  const canvas = document.getElementById('lorenzCanvas');
+  const container = canvas.parentElement;
+  const W = container.offsetWidth || 640;
+  const H = Math.floor(W * 0.6);
+  canvas.width = W; canvas.height = H;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#020202'; ctx.fillRect(0, 0, W, H);
+  const sigma = 10, rho = 28, beta = 8/3, dt = 0.005;
+  let x = 0.1, y = 0, z = 0;
+  const pts = [];
+  for (let i = 0; i < 15000; i++) {
+    const dx = sigma*(y-x), dy = x*(rho-z)-y, dz = x*y-beta*z;
+    x += dx*dt; y += dy*dt; z += dz*dt;
+    pts.push([x,y,z]);
+  }
+  const xs=pts.map(p=>p[0]),zs=pts.map(p=>p[2]);
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minZ=Math.min(...zs),maxZ=Math.max(...zs);
+  const pad=30,scaleX=(W-pad*2)/(maxX-minX),scaleZ=(H-pad*2)/(maxZ-minZ);
+  for (let i=1;i<pts.length;i++) {
+    const t=i/pts.length;
+    const px=pad+(pts[i-1][0]-minX)*scaleX,py=H-pad-(pts[i-1][2]-minZ)*scaleZ;
+    const cx=pad+(pts[i][0]-minX)*scaleX,cy=H-pad-(pts[i][2]-minZ)*scaleZ;
+    const r=Math.floor(80+t*80),g=Math.floor(120+t*40),b=Math.floor(200+t*55);
+    ctx.strokeStyle=`rgba(${r},${g},${b},0.35)`;ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(cx,cy);ctx.stroke();
+  }
+})();
+(function() {
+  const canvas=document.getElementById('bifCanvas');
+  const W=canvas.parentElement.offsetWidth||640;
+  canvas.width=W;canvas.height=180;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#020202';ctx.fillRect(0,0,W,180);
+  const rMin=2.5,rMax=4.0,steps=W*3;
+  for (let i=0;i<steps;i++) {
+    const r=rMin+(rMax-rMin)*(i/steps);
+    let x=0.5;
+    for (let n=0;n<300;n++) x=r*x*(1-x);
+    for (let n=0;n<150;n++) {
+      x=r*x*(1-x);
+      const px=(i/steps)*W,py=10+(1-x)*160;
+      const t=(r-rMin)/(rMax-rMin);
+      const col=t>0.9?'rgba(247,147,100,0.6)':t>0.7?'rgba(247,200,100,0.5)':'rgba(126,247,168,0.5)';
+      ctx.fillStyle=col;ctx.fillRect(px,py,0.6,0.6);
+    }
+  }
+  ctx.fillStyle='#333';ctx.font='10px Courier New';
+  ctx.fillText('r = 2.5',4,175);ctx.fillText('r = 4.0',W-42,175);ctx.fillText('caos →',W*0.82,15);
+})();
+(function() {
+  const canvas=document.getElementById('entropyCanvas');
+  const W=canvas.parentElement.offsetWidth||640;
+  canvas.width=W;canvas.height=120;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#020202';ctx.fillRect(0,0,W,120);
+  const pad=20;
+  ctx.strokeStyle='#1a1a1a';ctx.lineWidth=0.5;
+  for (let i=0;i<=4;i++) {const y=pad+(80/4)*i;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(W-pad,y);ctx.stroke();}
+  const grad=ctx.createLinearGradient(pad,0,W-pad,0);
+  grad.addColorStop(0,'#7eb8f7');grad.addColorStop(0.5,'#7ef7a8');grad.addColorStop(1,'#f7c87e');
+  ctx.strokeStyle=grad;ctx.lineWidth=1.5;ctx.beginPath();
+  const N=200;
+  for (let i=0;i<=N;i++) {
+    const p=0.001+0.998*(i/N);
+    const H=-(p*Math.log2(p)+(1-p)*Math.log2(1-p));
+    const px=pad+(W-2*pad)*(i/N),py=pad+(1-H)*80;
+    if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);
+  }
+  ctx.stroke();
+  ctx.fillStyle='#7ef7a8';ctx.beginPath();ctx.arc(W/2,pad,3,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#444';ctx.font='10px Courier New';
+  ctx.fillText('p=0 certeza',pad,115);ctx.fillText('H=1 máximo',W/2-28,pad-5);ctx.fillText('p=1 certeza',W-70,115);
+})();
+(function() {
+  const canvas=document.getElementById('zetaCanvas');
+  const W=canvas.parentElement.offsetWidth||640;
+  canvas.width=W;canvas.height=140;
+  const ctx=canvas.getContext('2d');
+  ctx.fillStyle='#020202';ctx.fillRect(0,0,W,140);
+  const pad=30,target=Math.PI*Math.PI/6,N=100;
+  const pts=[];let sum=0;
+  for (let n=1;n<=N;n++) {sum+=1/(n*n);pts.push(sum);}
+  ctx.strokeStyle='#1a1a1a';ctx.lineWidth=0.5;ctx.setLineDash([4,4]);
+  ctx.beginPath();ctx.moveTo(pad,pad);ctx.lineTo(W-pad,pad);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle='#333';ctx.font='10px Courier New';ctx.fillText('π²/6 ≈ 1.6449...',W-100,pad+12);
+  const grad=ctx.createLinearGradient(pad,0,W-pad,0);
+  grad.addColorStop(0,'#7eb8f7');grad.addColorStop(1,'#7ef7a8');
+  ctx.strokeStyle=grad;ctx.lineWidth=1.5;ctx.beginPath();
+  for (let i=0;i<pts.length;i++) {
+    const px=pad+(W-2*pad)*(i/(N-1)),py=pad+(1-pts[i]/target)*100;
+    if(i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py);
+  }
+  ctx.stroke();
+  ctx.fillStyle='#555';ctx.font='10px Courier New';
+  ctx.fillText('n=1',pad,135);ctx.fillText('n=100',W-50,135);
+})();
+</script>
+</body>
+</html>
